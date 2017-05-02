@@ -65,7 +65,7 @@ module Airbrake
       private
 
       def notify_airbrake(exception, env)
-        Airbrake.notify(exception) do |notice|
+        @notifier.notify(exception) do |notice|
           notice.stash[:rack_request] = ::Rack::Request.new(env)
         end
       end
